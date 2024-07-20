@@ -9,29 +9,19 @@ const Test = () => {
     //     </div>
     //   </div>
     // </section>
-    <section className="border border-white min-h-screen">
-      <div className="grid grid-rows-2 h-full">
-        <p className="border border-red-500 text-center lg:h-[700px]">
-          AWS Community Kenya
-        </p>
-        <div className="border border-orange-700 grid grid-cols-2 lg:h-[700px] p-4 items-center justify-items-center">
-          <p className="border border-green-500">
-            Pirate ipsum quarter aft yawl walk the plank Shiver me timbers
-            Blimey spyglass bring a spring upon her cable rope's end nipper.
-            Boom yardarm jury mast quarter coffer long clothes tack gangplank
-            topgallant avast. Broadside maroon Jack Ketch coxswain piracy gibbet
-            cutlass warp spirits weigh anchor.
-          </p>
-          <p className="border border-blue-500">
-            Pirate ipsum quarter aft yawl walk the plank Shiver me timbers
-            Blimey spyglass bring a spring upon her cable rope's end nipper.
-            Boom yardarm jury mast quarter coffer long clothes tack gangplank
-            topgallant avast. Broadside maroon Jack Ketch coxswain piracy gibbet
-            cutlass warp spirits weigh anchor.
-          </p>
+    <div className="border border-white min-h-screen grid grid-rows-2">
+      <div className="flex items-center justify-center border border-red-500 text-center">
+        AWS Community Kenya
+      </div>
+      <div className="p-4 flex flex-row">
+        <div className="w-[300px] border border-green-500 flex items-center justify-center">
+          Card1
+        </div>
+        <div className="w-[300px] border border-blue-500 flex items-center justify-center">
+          Card2
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
