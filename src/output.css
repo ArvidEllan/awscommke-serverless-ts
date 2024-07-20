@@ -554,6 +554,7 @@ video {
   --tw-contain-style:  ;
 }
 
+
 .absolute {
   position: absolute;
 }
@@ -586,9 +587,11 @@ video {
   display: flex;
 }
 
+
 .grid {
   display: grid;
 }
+
 
 .h-32 {
   height: 8rem;
@@ -670,6 +673,7 @@ video {
   border-radius: 9999px;
 }
 
+
 .border {
   border-width: 1px;
 }
@@ -688,6 +692,7 @@ video {
   --tw-border-opacity: 1;
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
+
 
 .border-white {
   --tw-border-opacity: 1;
@@ -714,18 +719,26 @@ video {
 
 :root {
   height: 100vh;
+
+:root {
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
+
   /* background-color: #2e1a47; */
   background-color: #2e1a47;
+
+  background-color: #242424;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 
 .parallax {
   /* The image used */
@@ -739,6 +752,7 @@ video {
   background-size: cover;
 }
 
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -749,6 +763,7 @@ a:hover {
   color: #535bf2;
 }
 
+
 /* body {
   margin: 0;
   display: flex;
@@ -756,6 +771,7 @@ a:hover {
   min-width: 320px;
   min-height: 100vh;
 } */
+
 
 h1 {
   font-size: 3.2em;
@@ -798,6 +814,7 @@ button:focus-visible {
   }
 }
 
+
 @media (min-width: 640px) {
   .sm\:h-40 {
     height: 10rem;
@@ -831,3 +848,4 @@ button:focus-visible {
     width: 850px;
   }
 }
+
