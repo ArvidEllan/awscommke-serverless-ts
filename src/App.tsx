@@ -1,3 +1,19 @@
+
+// import Home from "./Home";
+import "./output.css";
+import Test from "./Test";
+
+const App = () => {
+  return (
+    <>
+      {/* <Home /> */}
+      <Test />
+    </>
+  );
+};
+
+export default App;
+
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
@@ -11,3 +27,4 @@ const App=() => {
    
 }
 export default App
+
