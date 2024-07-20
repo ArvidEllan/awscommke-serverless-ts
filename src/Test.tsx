@@ -9,15 +9,17 @@ const Test = () => {
     //     </div>
     //   </div>
     // </section>
-    <div className="border border-white min-h-screen grid grid-rows-3">
+    <div className="border border-white min-h-screen grid grid-rows-2">
       <div className="flex items-center justify-center border border-red-500 text-center">
         AWS Community Kenya
       </div>
-      <div className="border border-green-500 flex items-center justify-center">
-        Card1
-      </div>
-      <div className="border border-blue-500 flex items-center justify-center">
-        Card2
+      <div className="p-4 flex flex-row">
+        <div className="w-[300px] border border-green-500 flex items-center justify-center">
+          Card1
+        </div>
+        <div className="w-[300px] border border-blue-500 flex items-center justify-center">
+          Card2
+        </div>
       </div>
     </div>
   );
