@@ -1,6 +1,6 @@
 
 // import Home from "./Home";
-import "./output.css";
+import "./index.css";
 import Test from "./Test";
 
 const App = () => {
