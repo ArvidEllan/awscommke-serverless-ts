@@ -1,165 +1,203 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import React, { useState } from "react";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarMenuToggle,
+  NavbarMenuItem,
+  NavbarMenu,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Button,
+} from "@nextui-org/react";
+import DropDownMenu from "./DropDownMenu";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
-function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null,
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null,
-  );
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+export default function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuItems = ["Members", "Sponsors", "Events", "Writeups", "Contact Us"];
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl" className="bg-[#fff6ea]">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
+    <Navbar
+      position="sticky"
+      isBordered
+      onMenuOpenChange={setIsMenuOpen}
+      className="flex overflow-y-hidden lg:overflow-y-auto"
+    >
+      {/* Logo and dropdown menu for small screens */}
+      <NavbarContent className="sm:hidden flex items-center w-full p-2 m-2 border border-red-500">
+        <NavbarBrand className="flex-1">
+          <img
+            src="/AWSLogo.png"
+            alt="AWS Logo"
+            className="w-14 sm:w-14" // Responsive width classes
+          />
+        </NavbarBrand>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
+        <div className="flex-none w-16 sm:w-18">
+          <DropDownMenu
+            menuLabels={[
+              "Members",
+              "Sponsors",
+              "Events",
+              "Writeups",
+              "Contact Us",
+            ]}
+          />
+        </div>
+      </NavbarContent>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <button>Register</button>
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+      {/* Logo for big screens */}
+      <NavbarContent className="hidden sm:flex items-center w-1/4 p-2 m-4 border border-red-500">
+        <NavbarBrand>
+          <img
+            src="/AWSLogo.png"
+            alt="AWS Logo"
+            className="w-14 sm:w-16 md:w-20 lg:w-22 xl:w-24" // Responsive width classes
+          />
+        </NavbarBrand>
+      </NavbarContent>
+
+      {/* Navigation links for big screens */}
+      <NavbarContent className="hidden sm:flex items-center justify-between w-full sm:w-3/4 p-2 m-2">
+        <NavbarItem className="flex-1 flex items-center space-x-6 lg:space-x-10 xl:space-x-12 justify-center">
+          <Link href="#" aria-current="page" className="hover:underline">
+            Members
+          </Link>
+          <Link href="#" aria-current="page" className="hover:underline">
+            Sponsors
+          </Link>
+          <Link href="#" aria-current="page" className="hover:underline">
+            Events
+          </Link>
+          <Link href="#" aria-current="page" className="hover:underline">
+            Articles
+          </Link>
+          <Link href="#" aria-current="page" className="hover:underline">
+            Contacts
+          </Link>
+        </NavbarItem>
+        <div className="flex items-center space-x-4 md:space-x-6 lg:space-x-8">
+          <NavbarItem>
+            <Link href="#" className="hover:underline">
+              Login
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Button as={Link} color="warning" href="#" variant="flat">
+              Sign Up
+            </Button>
+          </NavbarItem>
+        </div>
+      </NavbarContent>
+    </Navbar>
   );
 }
-export default ResponsiveAppBar;
+
+{
+  /* <NavbarContent className="flex m-2 justify-end border border-green-500">
+          <NavbarItem>
+            <Link href="#" className="text-sm lg:text-lg">
+              Login
+            </Link>
+          </NavbarItem>
+
+          <NavbarItem>
+            <Button
+              as={Link}
+              color="secondary"
+              href="#"
+              className="text-sm lg:text-lg bg-white p-1 rounded-lg"
+            >
+              Sign Up
+            </Button>
+          </NavbarItem>
+        </NavbarContent> */
+}
+{
+  /* </div>
+    </Navbar>
+
+    // <Navbar
+    //   isBordered
+    //   isMenuOpen={isMenuOpen}
+    //   onMenuOpenChange={setIsMenuOpen}
+    //   className="flex justify-center border border-green-500 mb-4"
+    // >
+    //   <NavbarContent className="sm:hidden">
+    //     <NavbarMenuToggle
+    //       aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+    //     />
+    //   </NavbarContent>
+
+    //   <NavbarContent className="sm:hidden pr-3">
+    //     <NavbarBrand>
+    //       <img
+    //         src="/AWSLogo.png"
+    //         alt="AWS Logo"
+    //         className="border border-red-500 w-11"
+    //       />
+    //       <p>Big Screen</p>
+    //     </NavbarBrand>
+    //   </NavbarContent>
+
+    //   <NavbarContent className="hidden sm:flex gap-4" justify="center">
+    //     <NavbarBrand>
+    //       <img
+    //         src="/AWSLogo.png"
+    //         alt="AWS Logo"
+    //         className="border border-red-500 w-24"
+    //       />
+    //       <p>Small Screen</p>
+    //     </NavbarBrand>
+    //     <NavbarItem>
+    //       <Link color="foreground" href="#">
+    //         Features
+    //       </Link>
+    //     </NavbarItem>
+    //     <NavbarItem isActive>
+    //       <Link href="#" aria-current="page">
+    //         Customers
+    //       </Link>
+    //     </NavbarItem>
+    //     <NavbarItem>
+    //       <Link color="foreground" href="#">
+    //         Integrations
+    //       </Link>
+    //     </NavbarItem>
+    //   </NavbarContent>
+
+    //   <NavbarContent justify="end">
+    //     <NavbarItem className="hidden lg:flex">
+    //       <Link href="#">Login</Link>
+    //     </NavbarItem>
+    //     <NavbarItem>
+    //       <Button as={Link} color="warning" href="#" variant="flat">
+    //         Sign Up
+    //       </Button>
+    //     </NavbarItem>
+    //   </NavbarContent>
+
+    //   <NavbarMenu>
+    //     {menuItems.map((item, index) => (
+    //       <NavbarMenuItem key={`${item}-${index}`}>
+    //         <Link
+    //           className="w-full"
+    //           color={
+    //             index === 2
+    //               ? "warning"
+    //               : index === menuItems.length - 1
+    //                 ? "danger"
+    //                 : "foreground"
+    //           }
+    //           href="#"
+    //           size="lg"
+    //         >
+    //           {item}
+    //         </Link>
+    //       </NavbarMenuItem>
+    //     ))}
+    //   </NavbarMenu>
+    // </Navbar>
+  );
+} */
+}
