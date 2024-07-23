@@ -17,9 +17,9 @@ const DropDownMenu = ({ menuLabels }: DropDownMenuLabels) => {
   return (
     <Dropdown>
       <DropdownTrigger className="m-2 bg-[#0a0116] w-2 sm:w-4">
-        <button>
-          <IoMenu />
-        </button>
+        <Button />
+        {/* <IoMenu />
+        </Button> */}
       </DropdownTrigger>
       <DropdownMenu aria-label="Link Actions">
         {menuLabels.map((label, index) => (

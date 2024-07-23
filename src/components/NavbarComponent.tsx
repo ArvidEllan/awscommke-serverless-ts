@@ -24,7 +24,7 @@ export default function App() {
       className="flex overflow-y-hidden lg:overflow-y-auto"
     >
       {/* Logo and dropdown menu for small screens */}
-      <NavbarContent className="sm:hidden flex items-center w-full p-2 m-2 border border-red-500">
+      <NavbarContent className="sm:hidden flex items-center w-full p-2 m-2">
         <NavbarBrand className="flex-1">
           <img
             src="/AWSLogo.png"
@@ -47,7 +47,7 @@ export default function App() {
       </NavbarContent>
 
       {/* Logo for big screens */}
-      <NavbarContent className="hidden sm:flex items-center w-1/4 p-2 m-4 border border-red-500">
+      <NavbarContent className="hidden sm:flex items-center w-1/4 p-2 m-4 ">
         <NavbarBrand>
           <img
             src="/AWSLogo.png"
@@ -58,7 +58,7 @@ export default function App() {
       </NavbarContent>
 
       {/* Navigation links for big screens */}
-      <NavbarContent className="hidden sm:flex items-center justify-between w-full sm:w-3/4 p-2 m-2">
+      <NavbarContent className="hidden sm:flex items-center justify-start w-full sm:w-3/4 p-2 m-2">
         <NavbarItem className="flex-1 flex items-center space-x-6 lg:space-x-10 xl:space-x-12 justify-center">
           <Link href="#" aria-current="page" className="hover:underline">
             Members
@@ -83,7 +83,7 @@ export default function App() {
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Button as={Link} color="warning" href="#" variant="flat">
+            <Button href="#" variant="ghost" className="bg-[#f79b01] mt-0">
               Sign Up
             </Button>
           </NavbarItem>
